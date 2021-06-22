@@ -1,5 +1,6 @@
 ﻿using AmbeeWeatherAPIFetcher.Entities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
@@ -69,6 +70,51 @@ namespace AmbeeWeatherAPIFetcher
                 Console.WriteLine(e.Message);
                 throw;
             }
+        }
+
+        public void weatherByLatLong(string lat, string lng)
+        {
+            WeatherData data;
+            string json;
+
+            HttpWebRequest request = (HttpWebRequest)HttpWebRequest
+                .Create($"{_apiAddress}weather/latest/by-lat-lng?lat={lat}&lng={lng}");
+            request.AllowAutoRedirect = false;
+            request.Headers["x-api-key"] = _apiKey;
+            request.Method = "GET";
+            try
+            {
+                var response = request.GetResponse();
+                StreamReader streamReader = new StreamReader(response.GetResponseStream(), true);
+                try
+                {
+                    json = streamReader.ReadToEnd();
+                    var parsedObject = JObject.Parse(json);
+
+                    if(parsedObject["message"].ToString() != "success")
+                    {
+                        throw new Exception("Message repsonse failed...");
+                    }
+
+                    data = JsonConvert.DeserializeObject<WeatherData>(parsedObject["data"].ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    throw;
+                }
+                finally
+                {
+                    streamReader.Close();
+                    response.Close();
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
+
+            Console.WriteLine(data.ToString());
         }
     }
 }
