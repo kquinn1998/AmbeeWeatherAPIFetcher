@@ -10,13 +10,16 @@ namespace AmbeeWeatherAPIFetcher
             WeatherAPIManager weatherApiManager = new WeatherAPIManager(apiManager);
             GeocodingAPIManager geocodingApiManager = new GeocodingAPIManager(apiManager);
 
-            Console.Write("Enter Latitude :");
-            var lat = Console.ReadLine();
+            Console.Write("Enter Address : ");
+            var address = Console.ReadLine();
 
-            Console.Write("Enter Longitude :");
-            var lng = Console.ReadLine();
+            var geoData = geocodingApiManager.AddressToLatLong(address);
 
-            weatherApiManager.WeatherByLatLong(lat, lng);
+            Console.WriteLine(geoData.ToString());
+
+            var weatherData = weatherApiManager.WeatherByLatLong(geoData.lat, geoData.lng);
+
+            Console.WriteLine(weatherData.ToString());
         }
     }
 }

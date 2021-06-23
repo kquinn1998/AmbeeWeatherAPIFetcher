@@ -39,7 +39,7 @@ namespace AmbeeWeatherAPIFetcher
             }
         }
 
-        public void WeatherByLatLong(string lat, string lng)
+        public WeatherData WeatherByLatLong(string lat, string lng)
         {
             WeatherData data;
             string json;
@@ -82,7 +82,7 @@ namespace AmbeeWeatherAPIFetcher
                 throw;
             }
 
-            Console.WriteLine(data.ToString());
+            return data;
         }
     }
 }
