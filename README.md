@@ -17,15 +17,15 @@ structure and architecture.</a>
 <h2>Running The Project Yourself</h2>
 <a>So far the project is a simple Console Application made using .NETCore 5.0.
 This may change in the future. The program requires you to make a JSON file in
-the root directory called "secrets.json". This file assumes the structure of :
-
-{
-  "weather_api_key": "",
-  "weather_api_address": "https://api.ambeedata.com/",
-  "geocoding_api_key": "",
-  "geocoding_api_address": "https://maps.googleapis.com/maps/api/geocode/"
-}
-
+the root directory called "secrets.json". <br>This file assumes the structure of :<br>
+<br>
+{<br>
+  "weather_api_key": "",<br>
+  "weather_api_address": "https://api.ambeedata.com/",<br>
+  "geocoding_api_key": "",<br>
+  "geocoding_api_address": "https://maps.googleapis.com/maps/api/geocode/"<br>
+}<br>
+<br>
 Where you must supply your own API Key for both Ambree Weather API and
 Googles Geocoding API. After supplying the keys the program can easily be run
 in debug mode or built for release using Visual Studio 2019.
