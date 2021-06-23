@@ -6,15 +6,20 @@ namespace AmbeeWeatherAPIFetcher
     {
         static void Main(string[] args)
         {
-            APIManager api = new APIManager();
+            APIManager apiManager = new APIManager();
+            WeatherAPIManager weatherApiManager = new WeatherAPIManager(apiManager);
+            GeocodingAPIManager geocodingApiManager = new GeocodingAPIManager(apiManager);
 
-            Console.Write("Enter Latitude :");
-            var lat = Console.ReadLine();
+            Console.Write("Enter Address : ");
+            var address = Console.ReadLine();
 
-            Console.Write("Enter Longitude :");
-            var lng = Console.ReadLine();
+            var geoData = geocodingApiManager.AddressToLatLong(address);
 
-            api.weatherByLatLong(lat, lng);
+            Console.WriteLine(geoData.ToString());
+
+            var weatherData = weatherApiManager.WeatherByLatLong(geoData.lat, geoData.lng);
+
+            Console.WriteLine(weatherData.ToString());
         }
     }
 }
