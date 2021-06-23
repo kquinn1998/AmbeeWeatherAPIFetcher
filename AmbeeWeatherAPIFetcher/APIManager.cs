@@ -1,9 +1,7 @@
 ﻿using AmbeeWeatherAPIFetcher.Entities;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
-using System.Net;
 
 namespace AmbeeWeatherAPIFetcher
 {
