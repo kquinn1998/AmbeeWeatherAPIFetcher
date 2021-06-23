@@ -13,10 +13,10 @@ namespace AmbeeWeatherAPIFetcher
         public string _geocodingApiAddress;
         public APIManager()
         {
-            setApiConfig();
+            SetApiConfig();
         }
 
-        private void setApiConfig()
+        private void SetApiConfig()
         {
 
             using (StreamReader r = new StreamReader("secrets.json"))

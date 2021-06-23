@@ -9,9 +9,9 @@ namespace AmbeeWeatherAPIFetcher
         public GeocodingAPIManager(APIManager apiConfig)
         {
             _apiConfig = apiConfig;
-            testConnection();
+            TestConnection();
         }
-        private void testConnection()
+        private void TestConnection()
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create($"{_apiConfig._geocodingApiAddress}json?address=Ireland");
             request.AllowAutoRedirect = false; // find out if this site is up and don't follow a redirector
@@ -33,6 +33,11 @@ namespace AmbeeWeatherAPIFetcher
                 Console.WriteLine(e.Message);
                 throw;
             }
+        }
+
+        private void AddressToLatLong()
+        {
+
         }
     }
 }

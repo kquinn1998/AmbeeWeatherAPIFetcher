@@ -16,7 +16,7 @@ namespace AmbeeWeatherAPIFetcher
             Console.Write("Enter Longitude :");
             var lng = Console.ReadLine();
 
-            weatherApiManager.weatherByLatLong(lat, lng);
+            weatherApiManager.WeatherByLatLong(lat, lng);
         }
     }
 }

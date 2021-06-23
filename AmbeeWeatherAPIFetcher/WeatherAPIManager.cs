@@ -13,9 +13,9 @@ namespace AmbeeWeatherAPIFetcher
         public WeatherAPIManager(APIManager apiConfig)
         {
             _apiConfig = apiConfig;
-            testConnection();
+            TestConnection();
         }
-        private void testConnection()
+        private void TestConnection()
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(_apiConfig._weatherApiAddress);
             request.AllowAutoRedirect = false; // find out if this site is up and don't follow a redirector
@@ -39,7 +39,7 @@ namespace AmbeeWeatherAPIFetcher
             }
         }
 
-        public void weatherByLatLong(string lat, string lng)
+        public void WeatherByLatLong(string lat, string lng)
         {
             WeatherData data;
             string json;
